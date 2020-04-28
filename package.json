@@ -1,10 +1,10 @@
 {
-  "name": "use-fsm",
+  "name": "@marvintau/well-formed",
   "version": "1.0.0",
   "description": "a FSM-manner state controller compoennt for rendering stateful stuff",
   "author": "marvintau",
   "license": "MIT",
-  "repository": "marvintau/use-fsm",
+  "repository": "marvintau/well-formed",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",

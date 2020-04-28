@@ -1,6 +1,6 @@
 {
-  "short_name": "use-fsm",
-  "name": "use-fsm",
+  "short_name": "@marvintau/well-formed",
+  "name": "@marvintau/well-formed",
   "start_url": "./index.html",
   "display": "standalone",
   "theme_color": "#000000",

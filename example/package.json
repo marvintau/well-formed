@@ -1,15 +1,15 @@
 {
-  "name": "use-fsm-example",
-  "homepage": "https://marvintau.github.io/use-fsm",
+  "name": "well-formed-example",
+  "homepage": "https://marvintau.github.io/well-formed",
   "version": "0.0.0",
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "prop-types": "^15.6.2",
-    "react": "^16.4.1",
+    "bootstrap": "^4.4.1",
+    "react": "../node_modules/react",
     "react-dom": "^16.4.1",
     "react-scripts": "^1.1.4",
-    "use-fsm": "file:.."
+    "@marvintau/well-formed": "file:.."
   },
   "scripts": {
     "start": "react-scripts start",

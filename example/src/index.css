@@ -3,3 +3,157 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+:root{
+  --blue: #007bff;
+  --indigo: #6610f2;
+  --purple: #6f42c1;
+  --pink: #e83e8c;
+  --red: #dc3545;
+  --orange: #fd7e14;
+  --yellow: #ffc107;
+  --green: #28a745;
+  --teal: #20c997;
+  --cyan: #17a2b8;
+  --white: #fff;
+  --gray: #6c757d;
+  --gray-dark: #343a40;
+  --primary: #007bff;
+  --secondary: #6c757d;
+  --success: #28a745;
+  --info: #17a2b8;
+  --warning: #ffc107;
+  --danger: #dc3545;
+  --light: #f8f9fa;
+  --dark: #343a40;
+}
+
+.form-holder {
+  margin: 10px;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+}
+.form-input, .form-button, .form-label{
+  outline:none;
+  letter-spacing: -0.05em;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  height: 2.5rem;
+  padding:3px 10px;
+  border: 1px solid black;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: normal;
+  transition-property: font-weight border-width;
+  transition-duration: 0.1s;
+}
+.form-input:hover, .form-button:hover, .form-label:hover{
+  font-weight: 900;
+  border-width: 3px;
+}
+
+.form-button{
+  cursor: pointer;
+}
+
+.select {
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 3px;
+  user-select: none;
+  padding:3px 0;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  font-weight: light;
+  font-size: 14px;
+}
+
+.select-indicator {
+  /* display: inline-block; */
+  padding: 3px 10px;
+  width: auto;
+}
+
+.select-options {
+  margin-top: 3px;
+  width: auto;
+}
+
+.select-option {
+  padding: 8px 10px;
+  background-color: white;
+  background-image: white;
+}
+
+.blue:hover {
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), var(--blue);
+}
+.indigo:hover {
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), var(--indigo);
+}
+.purple:hover {
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), var(--purple);
+}
+.pink:hover {
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), var(--pink);
+}
+.red:hover {
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), var(--red);
+}
+.orange:hover {
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), var(--orange);
+}
+.yellow:hover {
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), var(--yellow);
+}
+.green:hover {
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), var(--green);
+}
+.teal:hover {
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), var(--teal);
+}
+.cyan:hover {
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), var(--cyan);
+}
+.white:hover {
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), var(--white);
+}
+.gray:hover {
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), var(--gray);
+}
+.dark:hover {
+  background: var(--linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), gray-dark);
+}
+.primary:hover {
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), var(--primary);
+}
+.secondary:hover {
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), var(--secondary);
+}
+.success:hover {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9));
+  background-color: var(--success);
+}
+.info:hover {
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), var(--info);
+}
+.warning:hover {
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), var(--warning);
+}
+.danger:hover {
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), var(--danger);
+}
+.light:hover {
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), var(--light);
+}
+.dark:hover {
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), var(--dark);
+}
+.undefined:hover {
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), var(--dark);
+}
