@@ -21,7 +21,7 @@ function initReader(){
   })
 }
 
-function QRCodeScanner ({isShowing, desc, options={}, success}) {
+function QRCodeScanner ({isShowing, desc, options={}, success, cancel}) {
 
   const readerRef = useRef({});
   const videoRef = useRef(null);
@@ -93,6 +93,7 @@ function QRCodeScanner ({isShowing, desc, options={}, success}) {
       <video {...{id: 'scanner-video-input', className:'scanner-video', ref:videoRef, width, height, style:restVideoStyle}} />
       <button className="scanner-button" style={buttonStyle} onClick={decodeOnce}>{desc}</button>
       <div className="scanner-message" style={messageStyle}>{message}</div>
+      <button className="scanner-button scanner-button-cancel" style={buttonStyle} onClick={cancel}>取消</button>
     </div>
   : <div></div>
 }
@@ -119,10 +120,14 @@ export const ScannerProvider = ({children}) => {
     setShowing(false);
   }
 
+  const cancel = () => {
+    setShowing(false);
+  }
+
   const value = {scan}
 
   return <ScannerContext.Provider {...{value}}>
     {children}
-    <QRCodeScanner {...{isShowing, desc, success}} />
+    <QRCodeScanner {...{isShowing, desc, success, cancel}} />
   </ScannerContext.Provider>
 }

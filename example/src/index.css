@@ -66,18 +66,23 @@ body {
   cursor: pointer;
   position: absolute;
   right: 10px;
-  top: 10px;
+  top: 7px;
+  padding: 3px;
+  margin-left: 3px;
+  border-radius: 3px;
   color: rgba(0, 0, 0, 0.5);
   background-color: white;
-  transition-property: color;
+  transition-property: color background-color;
   transition-duration: 0.1s;
   /* z-index: 10; */
 }
 .input-float-button:hover{
+  background-color: var(--yellow);
   color: black;
 }
 
 .input-float-button:active{
+  background-color: var(--yellow);
   color: black;
 }
 
@@ -212,6 +217,11 @@ body {
   border:none;
   border-radius: 5px;
   outline:none;
+}
+
+.scanner-button-cancel {
+  background-color: var(--yellow);
+  color: black;
 }
 
 .scanner-message {
