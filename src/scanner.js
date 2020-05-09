@@ -21,7 +21,7 @@ function initReader(){
   })
 }
 
-function QRCodeScanner ({isShowing, desc, success}) {
+function QRCodeScanner ({isShowing, desc, options={}, success}) {
 
   const readerRef = useRef({});
   const videoRef = useRef(null);
@@ -70,7 +70,7 @@ function QRCodeScanner ({isShowing, desc, success}) {
 
     setTimeout(closeReader, 7000);
 
-    reader.decodeOnceFromVideoDevice(undefined, 'video')
+    reader.decodeOnceFromVideoDevice(undefined, 'scanner-video-input')
       .then((result) => {
         console.log(result);
         if (success !== undefined){
@@ -86,11 +86,13 @@ function QRCodeScanner ({isShowing, desc, success}) {
     closeReader();
   }
 
+  const {wrapperStyle={}, videoStyle={}, buttonStyle={}, messageStyle={}} = options;
+  const {width=200, height=200, ...restVideoStyle} = videoStyle;
   return isShowing
-  ? <div>
-      <video ref={videoRef} id="video" width="200" height="200" style={{border: '1px solid gray', margin:'30px'}} />
-      <button style={{margin:'30px'}} onClick={() => decodeOnce()}>{desc}</button>
-      <div>{message}</div>
+  ? <div className="scanner-wrapper" style={wrapperStyle}>
+      <video {...{id: 'scanner-video-input', className:'scanner-video', ref:videoRef, width, height, style:restVideoStyle}} />
+      <button className="scanner-button" style={buttonStyle} onClick={decodeOnce}>{desc}</button>
+      <div className="scanner-message" style={messageStyle}>{message}</div>
     </div>
   : <div></div>
 }

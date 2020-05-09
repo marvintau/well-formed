@@ -67,12 +67,18 @@ body {
   position: absolute;
   right: 10px;
   top: 10px;
-  opacity: 0.5;
-  transition-property: opacity;
+  color: rgba(0, 0, 0, 0.5);
+  background-color: white;
+  transition-property: color;
   transition-duration: 0.1s;
+  /* z-index: 10; */
 }
 .input-float-button:hover{
-  opacity: 1;
+  color: black;
+}
+
+.input-float-button:active{
+  color: black;
 }
 
 .select {
@@ -171,4 +177,44 @@ body {
 }
 .undefined:hover {
   background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), var(--dark);
+}
+
+.scanner-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(240, 240, 240, 0.1);
+  backdrop-filter: blur(1.5px);
+  transition: background-color 1s;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.scanner-video {
+  border: 0.5px solid lightgray;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.scanner-button {
+  width: 200px;
+  height: 30px;
+  margin-bottom: 20px;
+  background-color: var(--blue);
+  color: white;
+  font-size:14px;
+  font-weight: 700;
+  border:none;
+  border-radius: 5px;
+  outline:none;
+}
+
+.scanner-message {
+  font-size:12px;
+  letter-spacing: 0.5px;
 }
