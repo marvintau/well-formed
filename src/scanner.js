@@ -1,9 +1,9 @@
 import React, {useState, useEffect, useRef, createContext} from 'react';
-import {Button} from 'reactstrap';
 
 const { BrowserMultiFormatReader } = require('@zxing/library');
 
 function initReader(){
+  // console.log('initialized')
   const codeReader = new BrowserMultiFormatReader();
 
   return codeReader.getVideoInputDevices()
@@ -23,32 +23,25 @@ function initReader(){
 
 function QRCodeScanner ({isShowing, desc, success}) {
 
-  const [reader, setReader] = useState();
-  const [deviceID, setDeviceID] = useState();
-
-  const [message, setMessage] = useState();
-
+  const readerRef = useRef({});
   const videoRef = useRef(null);
 
-  useEffect(() => {
-  (async function (){
-      const {videoDeviceID, codeReader} = await initReader();
-      setReader(codeReader);
-      setDeviceID(videoDeviceID);
-  })()
-  }, [reader, deviceID]);
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
-    return () => {
-      turnOffCamera();
-    }
+    (async function (){
+        const {videoDeviceID, codeReader} = await initReader();
+        Object.assign(readerRef.current, {deviceID: videoDeviceID, reader: codeReader});
+    })();
   }, []);
 
-  const turnOffCamera = () => {
+  const closeReader = () => {
     const videoElem = videoRef.current;
     if (videoElem === null){
       return;
     }
+
+    console.log('video track stopped');
 
     const stream = videoElem.srcObject;
 
@@ -62,18 +55,22 @@ function QRCodeScanner ({isShowing, desc, success}) {
       track.stop();
     });
   
+    console.log('video track stopped');
+
     videoElem.srcObject = null;
 
     setMessage('请重新唤醒相机')
   }
 
-  const decodeOnce = (codeReader, selectedDeviceId) => {
+  const decodeOnce = () => {
+
+    const {reader} = readerRef.current;
 
     setMessage('相机将在7秒钟后休眠');
 
-    setTimeout(turnOffCamera, 7000);
+    setTimeout(closeReader, 7000);
 
-    codeReader.decodeFromInputVideoDevice(undefined, 'video')
+    reader.decodeOnceFromVideoDevice(undefined, 'video')
       .then((result) => {
         console.log(result);
         if (success !== undefined){
@@ -84,10 +81,15 @@ function QRCodeScanner ({isShowing, desc, success}) {
       })
   }
 
+  if(!isShowing){
+    console.log('not showing closing')
+    closeReader();
+  }
+
   return isShowing
   ? <div>
       <video ref={videoRef} id="video" width="200" height="200" style={{border: '1px solid gray', margin:'30px'}} />
-      <Button style={{margin:'30px'}} size="lg" color="primary" onClick={() => decodeOnce(reader, deviceID)}>{desc}</Button>
+      <button style={{margin:'30px'}} onClick={() => decodeOnce()}>{desc}</button>
       <div>{message}</div>
     </div>
   : <div></div>
@@ -99,26 +101,25 @@ export const ScannerContext = createContext({
 
 export const ScannerProvider = ({children}) => {
 
-  const [inputFunc, setInputFunc] = useState(() => {});
+  const [inputRef, setInputRef] = useState(() => {});
   const [desc, setDesc] = useState('');
 
   const [isShowing, setShowing] = useState(false);
 
-  const scan = (desc, func) => {
-    console.log('toggle scan')
+  const scan = (desc, ref) => {
     setDesc(desc);
-    setInputFunc(func);
+    setInputRef(ref);
     setShowing(true);
   }
 
   const success = (result) => {
-    inputFunc(result);
+    inputRef.current.value = result.text;
     setShowing(false);
   }
 
-  const values = {scan}
+  const value = {scan}
 
-  return <ScannerContext.Provider {...{values}}>
+  return <ScannerContext.Provider {...{value}}>
     {children}
     <QRCodeScanner {...{isShowing, desc, success}} />
   </ScannerContext.Provider>
