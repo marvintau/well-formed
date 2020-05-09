@@ -41,6 +41,7 @@ body {
   align-items: center;
   text-align: left;
   height: 2.5rem;
+  width: 100%;
   padding:3px 10px;
   border: 1px solid black;
   border-radius: 3px;
@@ -58,6 +59,20 @@ body {
 
 .form-button{
   cursor: pointer;
+}
+
+.input-float-button{
+  user-select: none;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  opacity: 0.5;
+  transition-property: opacity;
+  transition-duration: 0.1s;
+}
+.input-float-button:hover{
+  opacity: 1;
 }
 
 .select {

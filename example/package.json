@@ -5,11 +5,12 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "@marvintau/well-formed": "file:..",
     "bootstrap": "^4.4.1",
     "react": "../node_modules/react",
     "react-dom": "^16.4.1",
     "react-scripts": "^1.1.4",
-    "@marvintau/well-formed": "file:.."
+    "reactstrap": "^8.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
